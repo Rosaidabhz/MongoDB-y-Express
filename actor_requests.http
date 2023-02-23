@@ -6,11 +6,12 @@ Content-Type: application/json
     "act_id": 111,
     "act_fname": "Alex",
     "act_lname": "Hernandez",
-    "act_gender": "A"
+    "act_gender": "M"
 }
 
 ###
 GET http://localhost:9000/api/actor HTTP/1.1
+Accept: application/json
 
 ###
 GET http://localhost:9000/api/actor/104 HTTP/1.1
