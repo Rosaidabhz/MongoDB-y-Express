@@ -21,25 +21,25 @@ GET http://localhost:9000/api/movies HTTP/1.1
 
 
 ###
-GET http://localhost:9000/api/movies/63f5326ee051f7ab6ae78688 HTTP/1.1
+GET http://localhost:9000/api/movies/901 HTTP/1.1
 
 
 ###
 
-PUT http://localhost:9000/api/movies/63f53453e051f7ab6aea6b1b HTTP/1.1
+PUT http://localhost:9000/api/movies/901 HTTP/1.1
 Content-type: application/json
 
 {
-    "mov_id": 908,
-    "mov_title": "The Usual Suspects",
-    "mov_year": 1995,
-    "mov_time": 106,
+    "mov_id": 901,
+    "mov_title": "Vertigo",
+    "mov_year": 1958,
+    "mov_time": 128,
     "mov_lang": "English",
-    "mov_dt_rel": "1995-08-25",
+    "mov_dt_rel": "1958-08-24",
     "mov_rel_country": "UK"
 }
 
 
 ###
 
-DELETE  http://localhost:9000/api/movies/63f53453e051f7ab6aea6b1d HTTP/1.1
+DELETE  http://localhost:9000/api/movies/63f6595e9457fe31055590a4 HTTP/1.1

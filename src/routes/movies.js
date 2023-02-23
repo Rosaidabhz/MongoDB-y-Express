@@ -1,5 +1,5 @@
 const express = require('express');
-const moviesSchema = require("../models/movies")
+const moviesSchema = require('../models/movies');
 
 const router = express.Router(); 
 
@@ -29,7 +29,7 @@ router.get('/movies', (req, res) => {
 router.get('/movies/:id', (req, res) => {
     const { id } = req.params;
     moviesSchema
-        .findById(id)
+        .findOne({mov_id: id})
         .then((data) => res.json(data))
         .catch((error) => res.json({ message: error}))
 
@@ -38,22 +38,21 @@ router.get('/movies/:id', (req, res) => {
 //UPDATE A MOVIE 
 router.put('/movies/:id', (req, res) => {
     const { id } = req.params;
-    const { title, year, mov_time, mov_lang, mov_dt_rel, mov_rel_country } = req.body;
+    const { mov_title, mov_year, mov_time, mov_lang, mov_dt_rel, mov_rel_country } = req.body;
     moviesSchema
-        .updateOne({_id: id}, {$set: {title, year, mov_time, mov_lang, mov_dt_rel, mov_rel_country} })
-        .then((data) => res.json(data))
-        .catch((error) => res.json({ message: error}))
-
-})
+      .updateOne({ mov_id: id }, { $set: { mov_title, mov_year, mov_time, mov_lang, mov_dt_rel, mov_rel_country } })
+      .then((data) => res.json(data))
+      .catch((error) => res.json({ message: error }));
+  });
+  
 
 //DELETE A MOVIE 
 router.delete('/movies/:id', (req, res) => {
     const { id } = req.params;
     moviesSchema
-        .remove({_id: id})
-        .then((data) => res.json(data))
-        .catch((error) => res.json({ message: error}))
-
-})
+      .deleteOne({_id: id})
+      .then(() => res.json({ message: 'Movie deleted successfully' }))
+      .catch((error) => res.status(500).json({ message: error}));
+  });
 
 module.exports = router;

@@ -1,0 +1,12 @@
+###
+POST http://localhost:9000/api/director HTTP/1.1
+Content-Type: application/json
+
+{
+    "dir_id": 121,
+    "dir_fname": "James",
+    "dir_lname": "Cameron"
+}
+
+###
+GET http://localhost:9000/api/director HTTP/1.1
