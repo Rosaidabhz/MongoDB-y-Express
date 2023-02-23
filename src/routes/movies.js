@@ -56,9 +56,4 @@ router.delete('/movies/:id', (req, res) => {
 
 })
 
-
-
-
-
-
 module.exports = router;
