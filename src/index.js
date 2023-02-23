@@ -1,11 +1,18 @@
 const express = require("express");
 const mongoose = require("mongoose");
 require("dotenv").config();
+
 const  moviesRoutes = require("./routes/movies");
 const actorRoutes = require("./routes/actor")
 const movie_castRoutes = require("./routes/movie_cast")
 const directorRoutes = require("./routes/director")
 const genresRoutes = require("./routes/genres")
+const movie_genresRoutes = require("./routes/movie_genres")
+const ratingRoutes = require("./routes/rating")
+const reviewerRoutes = require("./routes/reviewer")
+const movie_directionRoutes = require("./routes/movie_direction")
+
+
 
 const app = express();
 const port = process.env.PORT || 9000;
@@ -17,6 +24,11 @@ app.use("/api", actorRoutes);
 app.use("/api", movie_castRoutes);
 app.use("/api", directorRoutes);
 app.use("/api", genresRoutes);
+app.use("/api", movie_genresRoutes);
+app.use("/api", ratingRoutes);
+app.use("/api", reviewerRoutes);
+app.use("/api", movie_directionRoutes);
+
 //ROUTES
 app.get("/", (req, res) => {
     res.send("Welcome to my API");
