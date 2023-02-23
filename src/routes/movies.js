@@ -55,9 +55,4 @@ router.delete('/movies/:id', (req, res) => {
       .catch((error) => res.status(500).json({ message: error}));
   });
 
-
-
-
-
-
 module.exports = router;
