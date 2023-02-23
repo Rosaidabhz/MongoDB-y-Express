@@ -10,6 +10,7 @@ Content-Type: application/json
 
 ###
 GET http://localhost:9000/api/director HTTP/1.1
+Accept: application/json
 
 ###
 GET http://localhost:9000/api/director/212 HTTP/1.1
