@@ -1,0 +1,13 @@
+###
+POST http://localhost:9000/api/actor HTTP/1.1
+Content-Type: application/json
+
+{
+    "act_id": 111,
+    "act_fname": "Alex",
+    "act_lname": "Hernandez",
+    "act_gender": "A"
+}
+
+###
+GET http://localhost:9000/api/actor HTTP/1.1

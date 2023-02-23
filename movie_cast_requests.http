@@ -1,0 +1,12 @@
+###
+POST http://localhost:9000/api/movie_cast HTTP/1.1
+Content-Type: application/json
+
+{
+    "act_id": 11,
+    "mov_id": 15,
+    "role": "Miranda Cameron"
+}
+
+###
+GET http://localhost:9000/api/movie_cast HTTP/1.1
