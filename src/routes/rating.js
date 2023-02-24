@@ -45,19 +45,15 @@ router.delete('/rating/:id', (req, res) => {
 
 //actualizar un rating
 
-router.put('/rating/:id', (req, res) => {
+router.put("/rating/:id", (req, res) => {
   const { id } = req.params;
-  const { rev_id, mov_id, rev_stars, num_o_ratings } = req.body;
-ratingSchema
-.findOneAndUpdate({ _id: id }, { rev_id, mov_id, rev_stars, num_o_ratings  }, { new: true })
-.then((updatedDocument) => {
-  if (!updatedDocument) {
-    return res.status(404).json({ message: 'Movie Genres not found' });
-  }
-  res.json(updatedDocument);
-})
-.catch((error) => res.status(500).json({ message: error }));
+  const { rev_id, mov_id, rev_stars, num_o_ratings} = req.body;
+  movieDirectionSchema
+    .updateOne({ rev_id: id }, { $set: { rev_id, mov_id, rev_stars, num_o_ratings }})
+    .then((data) => res.json(data))
+    .catch((error) => res.json({ message: error }));
 });
+
 
 
 module.exports = router;
