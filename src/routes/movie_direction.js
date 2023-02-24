@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.post("/movie_direction", (req,res) => {
     const movieDirection = movieDirectionSchema(req.body);
-    MovieDirection
+    movieDirection
     .save()
     .then((data) => res.json(data))
     .catch((error) => res.json({message: error}))
@@ -28,8 +28,8 @@ router.get("/movie_direction", (req, res) => {
 router.get('/movie_direction/:id', (req, res) => {
   const { id } = req.params;
   movieDirectionSchema
-    .findById(id)
-    .then((movieDirection) => res.json(movieDirection))
+    .findOne({dir_id: id})
+    .then((date) => res.json(data))
     .catch((error) => res.status(500).json({ message: error }));
 });
 
@@ -45,18 +45,13 @@ router.delete('/movie_direction/:id', (req, res) => {
 
 //actualizar un movie direction
 
-router.put('/movie_direction/:id', (req, res) => {
+router.put("/movie_direction/:id", (req, res) => {
   const { id } = req.params;
-  const { dir_id, dir_fname, dir_lname } = req.body;
-movieDirectionSchema
-.findOneAndUpdate({ _id: id }, { dir_id, dir_fname, dir_lname }, { new: true })
-.then((updatedDocument) => {
-  if (!updatedDocument) {
-    return res.status(404).json({ message: 'Movie Direction not found' });
-  }
-  res.json(updatedDocument);
-})
-.catch((error) => res.status(500).json({ message: error }));
+  const { dir_id, mov_id } = req.body;
+  movieDirectionSchema
+    .updateOne({ dir_id: id }, { $set: { dir_id, mov_id }})
+    .then((data) => res.json(data))
+    .catch((error) => res.json({ message: error }));
 });
 
 

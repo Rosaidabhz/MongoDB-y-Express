@@ -45,19 +45,13 @@ router.delete('/reviewer/:id', (req, res) => {
 
 //updating a reviewer
 
-router.put('/reviewer/:id', (req, res) => {
+router.put("/reviewer/:id", (req, res) => {
   const { id } = req.params;
   const { rev_id, rev_name } = req.body;
-reviewerSchema
-.findOneAndUpdate({ _id: id }, { rev_id, rev_name }, { new: true })
-.then((updatedDocument) => {
-  if (!updatedDocument) {
-    return res.status(404).json({ message: 'reviewer Genres not found' });
-  }
-  res.json(updatedDocument);
-})
-.catch((error) => res.status(500).json({ message: error }));
+  movieDirectionSchema
+    .updateOne({ rev_id: id }, { $set: { rev_id, rev_name }})
+    .then((data) => res.json(data))
+    .catch((error) => res.json({ message: error }));
 });
-
 
 module.exports = router;

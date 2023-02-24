@@ -1,0 +1,29 @@
+###
+POST http://localhost:9000/api/movie_direction HTTP/1.1
+Content-Type: application/json
+
+{
+    "dir_id": 205,
+    "mov_id": 905
+}
+
+###
+GET http://localhost:9000/api/movie_direction HTTP/1.1
+Accept: application/json
+
+###
+GET http:/localhost:9000/api/movie_direction/201 HTTP/1.1
+
+### 
+PUT  http://localhost:9000/api/movie_direction/201 HTTP/1.1
+
+{
+    "dir_id": 210,
+    "mov_id": 910
+}
+###
+DELETE http://localhost:9000/api/movie_direction/63f81f5f97be3b9a5f2e65c6 HTTP/1.1
+
+
+
+# NO ME SIRVE UN GET NI EL PUT

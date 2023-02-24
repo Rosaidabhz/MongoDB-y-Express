@@ -8,7 +8,7 @@ const router = express.Router();
 
 router.post("/movie_genres", (req,res) => {
     const movieGenres = movieGenresSchema(req.body);
-    movieCast
+    movieGenres
     .save()
     .then((data) => res.json(data))
     .catch((error) => res.json({message: error}))
@@ -45,18 +45,13 @@ router.delete('/movie_genres/:id', (req, res) => {
 
 //actualizar un movie genres
 
-router.put('/movie_genres/:id', (req, res) => {
+router.put("/movie_genres/:id", (req, res) => {
   const { id } = req.params;
   const { gen_id, mov_id } = req.body;
-movieGenresSchema
-.findOneAndUpdate({ _id: id }, { gen_id, mov_id }, { new: true })
-.then((updatedDocument) => {
-  if (!updatedDocument) {
-    return res.status(404).json({ message: 'Movie Genres not found' });
-  }
-  res.json(updatedDocument);
-})
-.catch((error) => res.status(500).json({ message: error }));
+  movieDirectionSchema
+    .updateOne({ gen_id: id }, { $set: { gen_id, mov_id }})
+    .then((data) => res.json(data))
+    .catch((error) => res.json({ message: error }));
 });
 
 
