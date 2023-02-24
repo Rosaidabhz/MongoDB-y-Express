@@ -3,8 +3,8 @@ POST http://localhost:9000/api/movie_genres HTTP/1.1
 Content-Type: application/json
 
 {
-    "gen_id": 917,
-    "mov_id": 1002
+    "gen_id": 950,
+    "mov_id": 1010
 }
 
 ###
@@ -12,14 +12,14 @@ GET http://localhost:9000/api/movie_genres HTTP/1.1
 Accept: application/json
 
 ###
-GET http:/localhost:9000/api/movie_genres HTTP/1.1
+GET http://localhost:9000/api/movie_genres/950 HTTP/1.1
 
 ### 
-PUT  http://localhost:9000/api/movie_genres/0 HTTP/1.1
+PUT  http://localhost:9000/api/movie_genres/917 HTTP/1.1
 
 {
-    "gen_id": 917,
-    "mov_id": 1002
+    "gen_id": 930,
+    "mov_id": 1030
 }
 
 ###

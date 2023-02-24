@@ -12,7 +12,7 @@ GET http://localhost:9000/api/movie_direction HTTP/1.1
 Accept: application/json
 
 ###
-GET http:/localhost:9000/api/movie_direction/201 HTTP/1.1
+GET http://localhost:9000/api/movie_direction/205 HTTP/1.1
 
 ### 
 PUT  http://localhost:9000/api/movie_direction/201 HTTP/1.1

@@ -4,7 +4,7 @@ Content-Type: application/json
 
 {
     "act_id": 111,
-    "act_fname": "Alex",
+    "act_fname": "Alex sdasdasd",
     "act_lname": "Hernandez",
     "act_gender": "M"
 }
@@ -21,4 +21,4 @@ GET http://localhost:9000/api/actor/104 HTTP/1.1
 DELETE  http://localhost:9000/api/actor/111 HTTP/1.1
 
 ###
-PUT http://localhost:9000/api/actor/111 HTTP/1.1
+PUT http://localhost:9000/api/actor/11111 HTTP/1.1

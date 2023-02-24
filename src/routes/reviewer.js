@@ -28,9 +28,14 @@ router.get("/reviewer", (req, res) => {
 router.get('/reviewer/:id', (req, res) => {
   const { id } = req.params;
   reviewerSchema
-    .findById(id)
-    .then((rating) => res.json(rating))
-    .catch((error) => res.status(500).json({ message: error }));
+  .findOne({ rev_id: id })
+  .then((reviewer) => {
+    if (!reviewer) {
+      return res.status(404).json({ message: `Reviewer with ID (rev_id) ${id} not found` });
+      }
+      res.json(reviewer);
+  })
+  .catch((error) => res.status(500).json({ message: error }));
 });
 
 //delete a reviewer

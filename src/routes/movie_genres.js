@@ -28,9 +28,14 @@ router.get("/movie_genres", (req, res) => {
 router.get('/movie_genres/:id', (req, res) => {
   const { id } = req.params;
   movieGenresSchema
-    .findById(id)
-    .then((movieGenres) => res.json(movieGenres))
-    .catch((error) => res.status(500).json({ message: error }));
+  .findOne({ gen_id: id })
+  .then((movieGenres) => {
+    if (!movieGenres) {
+      return res.status(404).json({ message: `Movie Genres with ID ${id} not found` });
+      }
+      res.json(movieGenres);
+  })
+  .catch((error) => res.status(500).json({ message: error }));
 });
 
 //eliminar un Movie Genres
@@ -48,7 +53,7 @@ router.delete('/movie_genres/:id', (req, res) => {
 router.put("/movie_genres/:id", (req, res) => {
   const { id } = req.params;
   const { gen_id, mov_id } = req.body;
-  movieDirectionSchema
+  movieGenresSchema
     .updateOne({ gen_id: id }, { $set: { gen_id, mov_id }})
     .then((data) => res.json(data))
     .catch((error) => res.json({ message: error }));

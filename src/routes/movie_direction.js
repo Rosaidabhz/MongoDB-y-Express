@@ -28,9 +28,14 @@ router.get("/movie_direction", (req, res) => {
 router.get('/movie_direction/:id', (req, res) => {
   const { id } = req.params;
   movieDirectionSchema
-    .findOne({dir_id: id})
-    .then((date) => res.json(data))
-    .catch((error) => res.status(500).json({ message: error }));
+  .findOne({ dir_id: id })
+  .then((movieDirection) => {
+    if (!movieDirection) {
+      return res.status(404).json({ message: `Movie direction with ID ${id} not found` });
+      }
+      res.json(movieDirection);
+  })
+  .catch((error) => res.status(500).json({ message: error }));
 });
 
 //eliminar un Movie Direction

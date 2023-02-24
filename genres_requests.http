@@ -12,7 +12,7 @@ GET http://localhost:9000/api/genres HTTP/1.1
 Accept: application/json
 
 ###
-GET http://localhost:9000/api/genres/63f78c489457fe31055317f5 HTTP/1.1
+GET http://localhost:9000/api/genres/1001 HTTP/1.1
 
 
 ### 

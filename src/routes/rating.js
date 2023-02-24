@@ -28,9 +28,14 @@ router.get("/rating", (req, res) => {
 router.get('/rating/:id', (req, res) => {
   const { id } = req.params;
   ratingSchema
-    .findById(id)
-    .then((rating) => res.json(rating))
-    .catch((error) => res.status(500).json({ message: error }));
+  .findOne({ rev_id: id })
+  .then((rating) => {
+    if (!rating) {
+      return res.status(404).json({ message: `Rating with ID (rev_id) ${id} not found` });
+      }
+      res.json(rating);
+  })
+  .catch((error) => res.status(500).json({ message: error }));
 });
 
 //eliminar un Rating
