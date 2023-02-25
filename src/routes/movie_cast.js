@@ -41,19 +41,14 @@ router.delete('/movie_cast/:id', (req, res) => {
 
 //actualizar un movie cast
 
+
 router.put('/movie_cast/:id', (req, res) => {
   const { id } = req.params;
-  const { act_id, mov_id, role } = req.body;
-movieCastSchema
-.findOneAndUpdate({ _id: id }, { act_id, mov_id, role }, { new: true })
-.then((updatedDocument) => {
-  if (!updatedDocument) {
-    return res.status(404).json({ message: 'Movie cast not found' });
-  }
-  res.json(updatedDocument);
-})
-.catch((error) => res.status(500).json({ message: error }));
-
+  const {mov_id, role} = req.body;
+  movieCastSchema
+  .updateOne({act_id:id}, { $set: {mov_id, role} })
+  .then((data) => res.json({ message: 'Movie Cast updated successfully', data }))
+  .catch((error) => res.json({message:error}));
 });
 
 

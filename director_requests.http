@@ -20,4 +20,11 @@ GET http://localhost:9000/api/director/212 HTTP/1.1
 DELETE http://localhost:9000/api/director/121 HTTP/1.1
 
 ###
-PUT http://localhost:9000/api/director/121 HTTP/1.1
+PUT http://localhost:9000/api/director/204 HTTP/1.1
+Content-Type: application/json
+
+{
+    "dir_id": 204,
+    "dir_fname": "michel",
+    "dir_lname": "cimano"
+}

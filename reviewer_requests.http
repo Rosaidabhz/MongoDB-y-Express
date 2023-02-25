@@ -3,8 +3,8 @@ POST http://localhost:9000/api/reviewer HTTP/1.1
 Content-Type: application/json
 
 {
-    "rev_id": 9002,
-    "rev_name": "Jack Malvern"
+    "rev_id": 9005,
+    "rev_name": "Jack Masdasdsdern"
 }
 
 ###
@@ -12,17 +12,19 @@ GET http://localhost:9000/api/reviewer HTTP/1.1
 Accept: application/json
 
 ###
-GET http:/localhost:9000/api/reviewer/ HTTP/1.1
+GET http://localhost:9000/api/reviewer/9005 HTTP/1.1
 
 ### 
-PUT  http://localhost:9000/api/reviewer/63f8208997be3b9a5f2e65cc HTTP/1.1
+PUT  http://localhost:9000/api/reviewer/9005 HTTP/1.1
+Content-Type: application/json
+
 {
-    "rev_id": 9002,
-    "rev_name": "Jack Malvern"
+    "rev_id": 9003,
+    "rev_name": "Legueco maria patricia"
 }
 
 ###
-DELETE http://localhost:9000/api/reviewer/63f8219797be3b9a5f2e65d3 HTTP/1.1
+DELETE http://localhost:9000/api/reviewer/63f8e2fed4358ed2e763202a HTTP/1.1
 
 
 

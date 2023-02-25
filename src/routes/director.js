@@ -49,11 +49,12 @@ router.delete('/director/:id', (req, res) => {
 
 router.put('/director/:id', (req, res) => {
   const { id } = req.params;
-  const { dir_fname, dir_lname } = req.body;
+  const {dir_fname, dir_lname} = req.body;
   directorSchema
-      .updateOne({ dir_id: id }, { $set: { dir_fname, dir_lname } })
-      .then(() => res.json({ message: 'Director updated successfully' }))
-      .catch((error) => res.status(500).json({ message: error }));
+  .updateOne({dir_id:id}, { $set: {dir_fname, dir_lname} })
+  .then((data) => res.json({ message: 'Director updated successfully', data }))
+  .catch((error) => res.json({message:error}));
+
 });
 
 

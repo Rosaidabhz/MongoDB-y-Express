@@ -29,13 +29,15 @@ router.delete('/genres/:id', (req, res) => {
 });
 
 // actualizar un genero
+
 router.put('/genres/:id', (req, res) => {
-    const { id } = req.params;
-    const { gen_title } = req.body;
-    genresSchema
-        .updateOne({ gen_id: id }, { $set: { gen_title } })
-        .then(() => res.json({ message: 'Genre updated successfully' }))
-        .catch((error) => res.status(500).json({ message: error }));
+  const { id } = req.params;
+  const {gen_title} = req.body;
+  genresSchema
+  .updateOne({gen_id:id}, { $set: {gen_title} })
+  .then((data) => res.json({ message: 'Genres updated successfully', data }))
+  .catch((error) => res.json({message:error}));
+
 });
 
 

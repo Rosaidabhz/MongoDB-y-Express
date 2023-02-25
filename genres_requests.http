@@ -12,13 +12,16 @@ GET http://localhost:9000/api/genres HTTP/1.1
 Accept: application/json
 
 ###
-GET http://localhost:9000/api/genres/63f78c489457fe31055317f5 HTTP/1.1
+GET http://localhost:9000/api/genres/1001 HTTP/1.1
 
+###
+PUT http://localhost:9000/api/genres/10044 HTTP/1.1
+Content-Type: application/json
 
-### 
-
-PUT  http://localhost:9000/api/genres/6 HTTP/1.1
-
+{
+    "gen_id": 10044,
+    "gen_title": "Biographyy"
+}
 
 ###
 DELETE http://localhost:9000/api/genres/6 HTTP/1.1

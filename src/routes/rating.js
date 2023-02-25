@@ -28,9 +28,14 @@ router.get("/rating", (req, res) => {
 router.get('/rating/:id', (req, res) => {
   const { id } = req.params;
   ratingSchema
-    .findById(id)
-    .then((rating) => res.json(rating))
-    .catch((error) => res.status(500).json({ message: error }));
+  .findOne({ rev_id: id })
+  .then((rating) => {
+    if (!rating) {
+      return res.status(404).json({ message: `Rating with ID (rev_id) ${id} not found` });
+      }
+      res.json(rating);
+  })
+  .catch((error) => res.status(500).json({ message: error }));
 });
 
 //eliminar un Rating
@@ -45,14 +50,16 @@ router.delete('/rating/:id', (req, res) => {
 
 //actualizar un rating
 
-router.put("/rating/:id", (req, res) => {
+
+router.put('/rating/:id', (req, res) => {
   const { id } = req.params;
-  const { rev_id, mov_id, rev_stars, num_o_ratings} = req.body;
-  movieDirectionSchema
-    .updateOne({ rev_id: id }, { $set: { rev_id, mov_id, rev_stars, num_o_ratings }})
-    .then((data) => res.json(data))
-    .catch((error) => res.json({ message: error }));
+  const {rev_id, mov_id, rev_stars, num_o_ratings} = req.body;
+  ratingSchema
+  .updateOne({rev_id:id}, { $set: {rev_id, mov_id, rev_stars, num_o_ratings} })
+  .then((data) => res.json({ message: 'Rating Cast updated successfully', data }))
+  .catch((error) => res.json({message:error}));
 });
+
 
 
 

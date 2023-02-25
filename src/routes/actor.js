@@ -42,14 +42,16 @@ router.delete('/actor/:id', (req, res) => {
   });
 
   //actualizar actor
+
 router.put('/actor/:id', (req, res) => {
     const { id } = req.params;
-    const { act_fname, act_lname, act_gender } = req.body;
+    const {act_fname, act_lname, act_gender} = req.body;
     actorSchema
-     .updateOne({ act_id: id }, { $set: { act_fname, act_lname, act_gender } })
-     .then(() => res.json({ message: 'Actor updated successfully' }))
-     .catch((error) => res.status(500).json({ message: error }));
-});
+    .updateOne({act_id:id}, { $set: {act_fname, act_lname, act_gender} })
+    .then((data) => res.json({ message: 'Actor updated successfully' }))
+    .catch((error) => res.json({message:error}));
+  
+  });
 
 
 module.exports = router;
