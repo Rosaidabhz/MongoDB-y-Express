@@ -58,6 +58,13 @@ router.put("/movie_genres/:id", (req, res) => {
     .then((data) => res.json(data))
     .catch((error) => res.json({ message: error }));
 });
-
+router.put('/movie_genres/:id', (req, res) => {
+  const { id } = req.params;
+  const { mov_id} = req.body;
+  movieGenresSchema
+  .updateOne({gen_id:id}, { $set: {mov_id, gen_id} })
+  .then((data) => res.json({ message: 'Movie Genres updated successfully', data }))
+  .catch((error) => res.json({message:error}));
+});
 
 module.exports = router;

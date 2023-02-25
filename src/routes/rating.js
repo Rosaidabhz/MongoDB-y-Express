@@ -50,14 +50,16 @@ router.delete('/rating/:id', (req, res) => {
 
 //actualizar un rating
 
-router.put("/rating/:id", (req, res) => {
+
+router.put('/rating/:id', (req, res) => {
   const { id } = req.params;
-  const { rev_id, mov_id, rev_stars, num_o_ratings} = req.body;
-  movieDirectionSchema
-    .updateOne({ rev_id: id }, { $set: { rev_id, mov_id, rev_stars, num_o_ratings }})
-    .then((data) => res.json(data))
-    .catch((error) => res.json({ message: error }));
+  const {rev_id, mov_id, rev_stars, num_o_ratings} = req.body;
+  ratingSchema
+  .updateOne({rev_id:id}, { $set: {rev_id, mov_id, rev_stars, num_o_ratings} })
+  .then((data) => res.json({ message: 'Rating Cast updated successfully', data }))
+  .catch((error) => res.json({message:error}));
 });
+
 
 
 

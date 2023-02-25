@@ -50,13 +50,13 @@ router.delete('/reviewer/:id', (req, res) => {
 
 //updating a reviewer
 
-router.put("/reviewer/:id", (req, res) => {
+router.put('/reviewer/:id', (req, res) => {
   const { id } = req.params;
-  const { rev_id, rev_name } = req.body;
-  movieDirectionSchema
-    .updateOne({ rev_id: id }, { $set: { rev_id, rev_name }})
-    .then((data) => res.json(data))
-    .catch((error) => res.json({ message: error }));
+  const {rev_id, rev_name} = req.body;
+  reviewerSchema
+  .updateOne({rev_id:id}, { $set: {rev_id, rev_name} })
+  .then((data) => res.json({ message: 'Reviewer Cast updated successfully', data }))
+  .catch((error) => res.json({message:error}));
 });
 
 module.exports = router;

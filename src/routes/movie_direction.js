@@ -50,14 +50,14 @@ router.delete('/movie_direction/:id', (req, res) => {
 
 //actualizar un movie direction
 
-router.put("/movie_direction/:id", (req, res) => {
+router.put('/movie_direction/:id', (req, res) => {
   const { id } = req.params;
-  const { dir_id, mov_id } = req.body;
+  const {dir_id, mov_id} = req.body;
   movieDirectionSchema
-    .updateOne({ dir_id: id }, { $set: { dir_id, mov_id }})
-    .then((data) => res.json(data))
-    .catch((error) => res.json({ message: error }));
-});
+  .updateOne({dir_id:id}, { $set: {dir_id, mov_id} })
+  .then((data) => res.json(data))
+  .catch((error) => res.json({message:error}));
 
+});
 
 module.exports = router;

@@ -21,4 +21,12 @@ GET http://localhost:9000/api/actor/104 HTTP/1.1
 DELETE  http://localhost:9000/api/actor/111 HTTP/1.1
 
 ###
-PUT http://localhost:9000/api/actor/11111 HTTP/1.1
+PUT http://localhost:9000/api/actor/201 HTTP/1.1
+Content-Type: application/json
+
+{
+    "act_id": 101,
+    "act_fname": "jamesS",
+    "act_lname": "Stewartss",
+    "act_gender": "M"
+}

@@ -36,13 +36,14 @@ router.get('/movies/:id', (req, res) => {
 })
 
 //UPDATE A MOVIE 
-router.put('/movies/:id', (req, res) => {
+
+  router.put('/movies/:id', (req, res) => {
     const { id } = req.params;
-    const { mov_title, mov_year, mov_time, mov_lang, mov_dt_rel, mov_rel_country } = req.body;
+    const {mov_title, mov_id, mov_year, mov_time, mov_lang, mov_dt_rel, mov_rel_country } = req.body;
     moviesSchema
-      .updateOne({ mov_id: id }, { $set: { mov_title, mov_year, mov_time, mov_lang, mov_dt_rel, mov_rel_country } })
-      .then((data) => res.json(data))
-      .catch((error) => res.json({ message: error }));
+    .updateOne({mov_id:id}, { $set: {mov_id, mov_title, mov_year, mov_time, mov_lang, mov_dt_rel, mov_rel_country} })
+    .then((data) => res.json({ message: 'Movies updated successfully', data }))
+    .catch((error) => res.json({message:error}));
   });
   
 
